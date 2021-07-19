@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Handlebars js</title>
+    <link rel="stylesheet" href="./css/main.min.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- Banner Section -->
+    <section class="container banner">
+      <header class="header">
+        <h1 class="header__title">Handlebar Blog</h1>
+        <p class="header__subtitle">Have used Handlebar js for template, Ajax for loading content from json, Intersection observer for image lazy loading & card diplay.<br>- Sunil Chaudhary</p>
+        <a href="#articles">
+          <button class="header__cta">Scroll Down <span class="cta__arrow-down">&#8964;</span></button>
+        </a>
+      </header>
+    </section>
+
+    <section class="container" id="articles">
+      <div class="article__grid"></div>
+    </section>
+
+    <!-- Handlebar js -->
+    <script src="./js/handlebars-v4.7.7.js"></script>
+    <!-- article card template -->
+    <script id="article__template" type="text/x-handlebars-template">
+      {{#each data}}
+        <button class="card" >
+          <img data-src="{{{image}}}" alt="" class="card__img" loading="lazy" />
+          <h3 class="card__title">{{{headline}}}</h3>
+          <p class="card__author">{{{author}}}</p>
+          <p class="card__dated">{{{datePublished}}}</p>
+          <p class="card__description">{{{description}}}</p>
+          <p class="card__genere">{{{genere}}}</p>
+        </button>
+        <div class="modal">
+          <div class="modal__content">
+            <button class="modal__close">&times;</button>
+            <img src="{{{image}}}" alt="" class="modal__img" loading="lazy" />
+            <h3 class="modal__title">{{{headline}}}</h3>
+            <p class="modal__description">{{{description}}}</p>
+            <p class="modal__author">{{{author}}}</p>
+            <p class="modal__dated">{{{datePublished}}}</p>
+            <p class="modal__article">{{{articleBody}}}</p>
+            <p class="modal__genere">{{{genere}}}</p>
+            <button class="modal__share">Share This</button>
+          </div>
+        </div>
+      {{/each}}
+    </script>
+    <script src="./js/main.js"></script>
+  </body>
+</html>
