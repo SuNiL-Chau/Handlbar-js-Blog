@@ -14,7 +14,7 @@
     <section class="container banner">
       <header class="header">
         <h1 class="header__title">Handlebar Blog</h1>
-        <p class="header__subtitle">Have used Handlebar js for template, Ajax for loading content from json, Intersection observer for image lazy loading & card diplay.<br>- Sunil Chaudhary</p>
+        <p class="header__subtitle">Have used Handlebar js for template, Ajax for loading content from json, Intersection observer for image lazy loading & card diplay.<br />- Sunil Chaudhary</p>
         <a href="#articles">
           <button class="header__cta">Scroll Down <span class="cta__arrow-down">&#8964;</span></button>
         </a>
@@ -30,7 +30,7 @@
     <!-- article card template -->
     <script id="article__template" type="text/x-handlebars-template">
       {{#each data}}
-        <button class="card" >
+        <button class="card">
           <img data-src="{{{image}}}" alt="" class="card__img" loading="lazy" />
           <h3 class="card__title">{{{headline}}}</h3>
           <p class="card__author">{{{author}}}</p>
@@ -48,7 +48,8 @@
             <p class="modal__dated">{{{datePublished}}}</p>
             <p class="modal__article">{{{articleBody}}}</p>
             <p class="modal__genere">{{{genere}}}</p>
-            <button class="modal__share">Share This</button>
+            <div class="modal__share">
+            </div>
           </div>
         </div>
       {{/each}}
