@@ -1,3 +1,4 @@
+// Ready function which get data and execute multiple function on ajax ready state.
 (function () {
   var xhttp;
 
@@ -12,6 +13,7 @@
   // checking status of the file once ready converting data to json
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
+      // All Functions Goes here
       const jsonData = JSON.parse(this.responseText);
       createElements(jsonData);
       scrollDisplay();
@@ -123,6 +125,7 @@ function displayModal() {
 
 // Function shareBtn
 function shareBtn() {
+  // storing all social media html elemets for appending dynamic ready share btns
   const shareBtn = document.querySelectorAll(".modal__share");
   let shareFb = (link, text) => {
     return `
@@ -181,24 +184,26 @@ function shareBtn() {
 
   // Foreach loop of share btn for share the url using navigator
   shareBtn.forEach((share) => {
-    // first getting current modal all children for title & description getting parent and then get it's children element have taken the card id using traversing two parent element then previous sibling;
+    // first getting current modal all children for title then traversing 2parents back in dom and gitting it's previous element id i.e how we got id & title
     let modalChildren = share.parentElement.children,
       urlTitle = modalChildren[2].innerHTML,
       urlLoc = share.parentElement.parentElement.previousElementSibling.id;
 
+    // storing all data in an object for easier approach
     let shareData = {
       title: urlTitle,
       url: urlLoc,
     };
 
-    // console.log(shareData);
-
+    // returning all elemt with the current share title & link id
     const mainshareFb = shareFb(shareData.url, shareData.title);
     const mainshareTwitter = shareTwitter(shareData.url, shareData.title);
     const mainshareEmail = shareEmail(shareData.url, shareData.title);
     const mainshareLinkedin = shareLinkedin(shareData.url, shareData.title);
     const mainshareWhatsapp = shareWhatsapp(shareData.url, shareData.title);
     const mainshareTelegram = shareTelegram(shareData.url, shareData.title);
+
+    // inserting/appending all elements in the share container
     share.innerHTML = mainshareFb + mainshareTwitter + mainshareEmail + mainshareLinkedin + mainshareWhatsapp + mainshareTelegram;
   });
 }
